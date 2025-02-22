@@ -55,5 +55,11 @@ public class GreetingController {
     public Greeting SavaGreeting(@RequestParam(required=false)String firstName,@RequestParam(required=false)String lastName){
         return greetingService.saveGreetingMsg(firstName,lastName);
     }
+    //list of messages
+    @GetMapping("/get")
+    public List<Greeting> getAllGreeting(){
+        return greetingService.getAllGreetings();
+    }
+
 
 }

@@ -39,6 +39,11 @@ public class GreetingService {
         Greeting greet = new Greeting(firstName,lastName,message);
         return greetingRepository.save(greet);
     }
+    public List<Greeting> getAllGreetings(){
+        List<Greeting> allGreet = greetingRepository.findAll();
+        return allGreet;
+    }
+
 
 }
 
