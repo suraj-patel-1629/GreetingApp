@@ -22,6 +22,11 @@ public class GreetingController {
     }
 
 
+    @GetMapping("/personlized")
+    public String userGrreting(@RequestParam(required = false) String firstName ,@RequestParam(required = false)String lastName){
+        return "{\"message\":\""+greetingService.getPersonlizedGreeting(firstName,lastName)+"\" }";
+    }
+
     @GetMapping("/greeting")
     public String getGreeting() {
         return "{\"message\": \"Hello World\"}";
