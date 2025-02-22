@@ -5,6 +5,7 @@ import com.BridgeLabz.GreetingApp.repository.GreetingRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GreetingService {
@@ -18,7 +19,7 @@ public class GreetingService {
         return "Hello Guys";
     }
 
-
+ // genrating the message
     public String getPersonlizedGreeting(String firstName,String lastName){
    if(firstName !=null && lastName !=null){
        return "Hello "+firstName +" "+lastName;
@@ -33,17 +34,22 @@ public class GreetingService {
        return "Hello Guys";
    }
     }
-
+ // saving greeting to db
     public Greeting saveGreetingMsg(String firstName,String lastName){
         String message = getPersonlizedGreeting(firstName,lastName);
         Greeting greet = new Greeting(firstName,lastName,message);
         return greetingRepository.save(greet);
     }
+    // fetching all greeting from the db
     public List<Greeting> getAllGreetings(){
         List<Greeting> allGreet = greetingRepository.findAll();
         return allGreet;
     }
+    // fetching the greeting by id from db
+   public Greeting getGreetingsById(Long id){
+       return greetingRepository.findById(id).orElse(null);
 
+   }
 
 }
 

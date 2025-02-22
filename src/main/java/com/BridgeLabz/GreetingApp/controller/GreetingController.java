@@ -60,6 +60,10 @@ public class GreetingController {
     public List<Greeting> getAllGreeting(){
         return greetingService.getAllGreetings();
     }
-
+   // Greeting by id
+    @GetMapping("/getbyid/{id}")
+    public Greeting getGreetingById(@PathVariable Long id){
+        return greetingService.getGreetingsById(id);
+    }
 
 }
