@@ -57,6 +57,11 @@ public class GreetingService {
         greetingRepository.save(greet);
         return greet;
     }
+    // deleting the greeting from DB
+    public String deleteGreeting(Long id){
+        greetingRepository.deleteById(id);
+        return "Greeting has been deleted";
+    }
 
 }
 
