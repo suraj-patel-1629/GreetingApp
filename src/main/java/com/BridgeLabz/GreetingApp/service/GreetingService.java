@@ -50,6 +50,13 @@ public class GreetingService {
        return greetingRepository.findById(id).orElse(null);
 
    }
+   //editing the msg of greeting
+    public Greeting updatingGreeting(Long id,String msg){
+        Greeting greet = getGreetingsById(id);
+        greet.setMessage(msg);
+        greetingRepository.save(greet);
+        return greet;
+    }
 
 }
 

@@ -65,5 +65,10 @@ public class GreetingController {
     public Greeting getGreetingById(@PathVariable Long id){
         return greetingService.getGreetingsById(id);
     }
+    //updating the Greeting
+    @PatchMapping("/update/{id}/")
+    public Greeting updateGreeting(@PathVariable Long id,@RequestParam(required = true)String msg){
+        return greetingService.updatingGreeting(id,msg);
+    }
 
 }
