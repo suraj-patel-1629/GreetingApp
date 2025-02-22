@@ -2,9 +2,12 @@
 package com.BridgeLabz.GreetingApp.controller;
 
 
+import com.BridgeLabz.GreetingApp.model.Greeting;
 import com.BridgeLabz.GreetingApp.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -46,4 +49,11 @@ public class GreetingController {
     public String deleteGreeting() {
         return "{\"message\": \"Greeting Deleted\"}";
     }
+
+    //save data to database
+    @PostMapping("/save")
+    public Greeting SavaGreeting(@RequestParam(required=false)String firstName,@RequestParam(required=false)String lastName){
+        return greetingService.saveGreetingMsg(firstName,lastName);
+    }
+
 }
